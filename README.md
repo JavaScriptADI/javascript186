@@ -9,3 +9,8 @@
 
 ### Table of Contents
 - [Introduction](./docs/introduction.md)
+
+
+### Assignments
+
+- [Assignment 1 (Workshop 1)](https://classroom.github.com/a/Q7hCIGev)
