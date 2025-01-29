@@ -14,3 +14,4 @@
 ### Assignments
 
 - [Assignment 1 (Workshop 1)](https://classroom.github.com/a/Q7hCIGev)
+- [Assignment 2 (Workshop 2)](https://classroom.github.com/a/8Irs9vUz)
