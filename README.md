@@ -15,3 +15,6 @@
 
 - [Assignment 1 (Workshop 1)](https://classroom.github.com/a/Q7hCIGev)
 - [Assignment 2 (Workshop 2)](https://classroom.github.com/a/8Irs9vUz)
+- (Assignment 3 (Worekshop 3)) - Check continue && break statements
+- [Workout 3 - Part 1 (Workshop 3)](./workshop_3/assignment.js)
+
