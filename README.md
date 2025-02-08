@@ -63,6 +63,21 @@
 </details>
 
 
+<details>
+    <summary>Workshop 5 (Arrays & Functions)</summary>
+    <br>
+    <ul>
+        <li>Array Methods (slice, splice, indxeOf, includes, reverse)</li>
+        <li>Sotring Arrays</li>
+        <li>Defining Functions</li>
+        <li>Function Parameters</li>
+        <li>Returning Values</li>
+        <li>Default Parameters</li>
+        <li>Arrow Functions</li>
+        <li>Function Expressions</li>
+    </ul>
+</details>
+
 
 ### Assignments
 
