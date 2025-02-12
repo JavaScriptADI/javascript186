@@ -98,5 +98,6 @@
     - [Workout](./workshop_3/assignment.js)
     - [Assignment 3 (Workshop 3)](https://classroom.github.com/a/PPLOgv7z)
    </details>
-- [Assignment 4](https://classroom.github.com/a/RYmnDQG8)
+- [Assignment 4 (Workshop 4)](https://classroom.github.com/a/RYmnDQG8)
+- [Assignment 5 (Workshop 5)](https://classroom.github.com/a/Lg6EH9IG)
 
