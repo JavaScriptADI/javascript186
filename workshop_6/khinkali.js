@@ -25,6 +25,7 @@ function combinePlates(plate1, plate2) {
 
 const plate = orderKhinkali(10);
 
+
 console.log(plate);
 
 for (let i = 0; i < 5; i++){
@@ -40,6 +41,7 @@ console.log(plate);
 
 combinePlates(plate, orderKhinkali(10));
 combinePlates(plate, orderKhinkali());
+plate.splice()
 
 console.log(`plate ${plate.length}`);
 
