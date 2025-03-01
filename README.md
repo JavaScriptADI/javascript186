@@ -101,4 +101,4 @@
 - [Assignment 4 (Workshop 4)](https://classroom.github.com/a/RYmnDQG8)
 - [Assignment 5 (Workshop 5)](https://classroom.github.com/a/Lg6EH9IG)
 - [Assignment 6 (Workshop 7)](https://classroom.github.com/a/J00SOuMz)
-
+- [Midterm](https://classroom.github.com/a/Z0p2iIkL)
