@@ -33,7 +33,7 @@ console.log("Reduced:", nums.reduce((acc, curr) => {
 function reduce(arr, callbackFn, initialValue) {
     let acc = initialValue;
     for (const num of arr) {
-        acc  = callbackFn(acc, num);
+        acc = callbackFn(acc, num);
     }
     return acc;
 }
