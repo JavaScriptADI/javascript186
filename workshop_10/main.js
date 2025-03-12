@@ -12,7 +12,6 @@ fetch("https://dummyjson.com/products")
         (data) => {
             data.products.forEach((product) => {
                 const div = document.createElement("div");
-
                 div.innerHTML = (`
                     <div class="card h-100 shadow product position-relative">
                         <div class="position-absolute d-flex gap-1 m-2 opacity-0 tags">
@@ -23,8 +22,11 @@ fetch("https://dummyjson.com/products")
                             <h5 class="card-title">${product.title}</h5>
                             <div class="d-flex justify-content-between">
                                 <span>${product.price}$</span>
-                                <div class="text-warning">
+                                <div class="text-warning d-flex align-middle">
                                     ${star.repeat(parseInt(product.rating))}${starOutline.repeat(5 - parseInt(product.rating))}
+                                    <span class="ms-1">
+                                        ${parseInt((product.rating / 5) * 100)}%
+                                    </span>
                                 </div>
                             </div>
                             <p class="card-text">${product.description}</p>
