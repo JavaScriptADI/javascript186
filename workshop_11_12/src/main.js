@@ -1,6 +1,6 @@
+import { getStars } from "./utils.js";
+
 const productsDiv = document.querySelector("#products");
-const star = (`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6" style="width: 24px;height: 24px"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>`);
-const starOutline = (`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" style="width: 24px;height: 24px"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" /></svg>`);
 const loadMoreButton = document.querySelector("#load-more-products");
 const searchForm = document.querySelector("#search-form");
 const searchTray = document.querySelector("#search-tray");
@@ -9,6 +9,7 @@ const LIMIT = 10;
 
 function createProductDiv(product) {
     const div = document.createElement("div");
+    div.classList.add("col")
     div.innerHTML = (`
         <div class="card h-100 shadow product position-relative">
             <div class="position-absolute d-flex gap-1 m-2 opacity-0 tags">
@@ -20,13 +21,11 @@ function createProductDiv(product) {
                 <div class="d-flex justify-content-between">
                     <span>${product.price}$</span>
                     <div class="text-warning d-flex align-middle">
-                        ${star.repeat(parseInt(product.rating))}${starOutline.repeat(5 - parseInt(product.rating))}
-                        <span class="ms-1">
-                            ${parseInt((product.rating / 5) * 100)}%
-                        </span>
+                        ${getStars(product.rating)}
                     </div>
                 </div>
                 <p class="card-text">${product.description}</p>
+                <a href="productDetails.html?id=${product.id}" class="btn btn-primary">Details</a>
             </div>
         </div>
     `);
@@ -64,9 +63,11 @@ loadMoreButton.addEventListener("click", () => {
     // loadMoreButton.innerHTML = currentPage;
 });
 
+
 fetchAndLoadProducts(`https://dummyjson.com/products?limit=${LIMIT}`);
 
 searchForm.addEventListener("submit", (event) => {
+    // TODO: Implement debounce search
     event.preventDefault();
     console.log(searchForm.search.value);
     fetch(`https://dummyjson.com/products/search?limit=10&q=${searchForm.search.value}`)
@@ -76,13 +77,14 @@ searchForm.addEventListener("submit", (event) => {
             data.products.forEach((product) => {
                 const div = document.createElement("div");
                 div.innerHTML = (`
-                    <div class="row p-2 rounded shadow m-1 product d-flex align-items-center" style="background: rgba(75, 75, 75, 0.6); cursor: pointer;">
+                    <a class="row p-2 rounded shadow m-1 product d-flex align-items-center text-decoration-none text-white" 
+                       style="background: rgba(75, 75, 75, 0.6); cursor: pointer;" href="productDetails.html?id=${product.id}">
                         <span class="col-2 bg-light rounded d-flex justify-content-center align-items-center">
                             <img src="${product.thumbnail}" width="50" height="50"/>
                         </span>
                         <span class="col-7">${product.title}</span>
                         <span class="col-2">${product.price}$</span>
-                    </div>
+                    </a>
                 `);
 
                 searchTray.appendChild(div);
@@ -96,9 +98,14 @@ searchForm.search.addEventListener("input", () => {
     searchTray.classList.add("d-none");
 });
 
+searchForm.search.addEventListener("focus", () => {
+    if (searchForm.search.value.length > 0) {
+        searchTray.classList.remove("d-none");
+    }
+});
+
 document.addEventListener("click", (event) => {
     if (!searchTray.contains(event.target) && !searchForm.contains(event.target)) {
-        searchTray.innerHTML = "";
         searchTray.classList.add("d-none");
     }
 });
